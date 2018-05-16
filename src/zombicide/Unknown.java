@@ -9,6 +9,6 @@ package zombicide;
  *
  * @author alu520994162
  */
-public class Unknown extends Zombie{
+public class Unknown {
     
 }

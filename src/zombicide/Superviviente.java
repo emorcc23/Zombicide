@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package zombicide;
 
 /**
@@ -10,22 +5,20 @@ package zombicide;
  * @author alu520994162
  */
 public class Superviviente {
-
     /**
      * Atributos de la clase Superviviente
      */
     private String nombre = "Novato";
     private int vidas = 3;
     private int nivel = 0;
-
+    
     // Por defecto, un superviviente será 'RAPIDO'.
     private SkillsPersonaje skill = SkillsPersonaje.RAPIDO;
     //Hacemos una composición de la clase Arma.
     private Arma arma;
-
+    
     //Constructor por defecto. 
-    public Superviviente() {
-    }
+    public Superviviente() {}
 
     //Constructor con todos los parámetros.
     public Superviviente(String nombre, int vidas, int nivel, SkillsPersonaje skill) {
@@ -67,16 +60,15 @@ public class Superviviente {
     public void setSkill(SkillsPersonaje skill) {
         this.skill = skill;
     }
-
+    
     /**
      * Metodo que devuelve si un superviviente tiene arma o no.
-     *
-     * @return
+     * @return 
      */
     public boolean tieneArma() {
         return !(arma == null);
     }
-
+    
     public void deleteArma() {
         this.arma = null;
     }
@@ -87,5 +79,5 @@ public class Superviviente {
 
     public void setArma(Arma arma) {
         this.arma = arma;
-    }
+    }   
 }

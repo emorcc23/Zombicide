@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package zombicide;
 
 /**
@@ -10,7 +6,7 @@ package zombicide;
  * @author alu520994162
  */
 public class Arma {
-
+    
     /**
      * Atributos de la clase arma
      */
@@ -22,27 +18,25 @@ public class Arma {
     /**
      * Constructor por defecto donde se inicia con una sartén.
      */
-    public Arma() {
-    }
+    public Arma() {}
 
     /**
      * Constructor con todos los parámetros
-     *
      * @param daño
-     * @param distancia
+     * @param distancia 
      */
     public Arma(int daño, int distancia) {
         this.dano = daño;
         this.distancia = distancia;
         TipoArma tipoarma = TipoArma.SARTEN;
     }
-
+    
     public Arma(int dano, int distancia, TipoArma tipoarma) {
         this.dano = dano;
         this.distancia = distancia;
         this.tipoarma = tipoarma;
     }
-
+    
     public Arma(TipoArma tipoarma) {
         this.tipoarma = tipoarma;
     }
@@ -78,31 +72,30 @@ public class Arma {
     public void setGrito(String grito) {
         this.grito = grito;
     }
-
+    
     /**
      * Constructos con todos los parámetros incluido grito
-     *
      * @param dano
      * @param distancia
      * @param tipoarma
-     * @param grito
+     * @param grito 
      */
     public Arma(int dano, int distancia, TipoArma tipoarma, String grito) {
         this.dano = dano;
         this.distancia = distancia;
         this.tipoarma = tipoarma;
     }
-
+    
     /**
      * Método que muestra vuestro grito de guerra
-     *
-     * @param grito
+     * @param grito 
      */
     public void Armarse(String grito) {
         this.grito = grito;
     }
-
+    
     public String getArmarse() {
         return grito;
     }
+
 }

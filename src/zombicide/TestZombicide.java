@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package zombicide;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  *
@@ -15,6 +10,7 @@ public class TestZombicide {
 
     static ArrayList<Superviviente> listaSupervivientes = new ArrayList<>();
     static ArrayList<Zombie> listaZombies = new ArrayList<>();
+
     /**
      * @param args the command line arguments
      */
@@ -28,12 +24,12 @@ public class TestZombicide {
         Superviviente Maggie = new Superviviente("Maggie", 3, 0, SkillsPersonaje.BUSCADOR);
         Superviviente Glenn = new Superviviente("Glenn", 3, 0, SkillsPersonaje.ESCURRIDIZO);
         Superviviente Michonne = new Superviviente("Michonne", 3, 0, SkillsPersonaje.AMBIDIESTRO);
-        /*Zombie zombie1 = new Zombie(2, 1, TipoZombie.CAMINANTE);
+        Zombie zombie1 = new Zombie(2, 1, TipoZombie.CAMINANTE);
         Zombie zombie2 = new Zombie(3, 2, TipoZombie.CAMINANTE);
         Zombie zombie3 = new Zombie(3, 1, TipoZombie.CAMINANTE);
         Zombie zombie4 = new Zombie(2, 3, TipoZombie.CAMINANTE);
-        Zombie zombie5 = new Zombie(5, 1, TipoZombie.CAMINANTE);*/
-
+        Zombie zombie5 = new Zombie(5, 1, TipoZombie.CAMINANTE);
+        
         /**
          * Creamos las 4 armas con sus valores iniciales.
          */
@@ -41,7 +37,7 @@ public class TestZombicide {
         Arma pistola = new Arma(3, 1, TipoArma.PISTOLA);
         Arma escopeta = new Arma(7, 2, TipoArma.ESCOPETA);
         Arma katana = new Arma(4, 0, TipoArma.KATANA);
-
+        
         /**
          * Les damos las armas a nuestros supervivientes
          */
@@ -51,6 +47,8 @@ public class TestZombicide {
         Glenn.setArma(sarten);
         Michonne.setArma(katana);
 
+        Caminante c = new Caminante();
+        
         /**
          * Añadimos a los jugadores y a los zombies a sus arrays
          */
@@ -59,12 +57,12 @@ public class TestZombicide {
         listaSupervivientes.add(Maggie);
         listaSupervivientes.add(Glenn);
         listaSupervivientes.add(Michonne);
-        /* listaZombies.add(zombie1);
+        listaZombies.add(zombie1);
         listaZombies.add(zombie2);
         listaZombies.add(zombie3);
         listaZombies.add(zombie4);
-        listaZombies.add(zombie5);*/
- /*
+        listaZombies.add(zombie5);
+/*
         for (int i = 0; i < listaSupervivientes.size(); i++) {
             System.out.println("Superviviente: " + (i + 1) + "\t");
             System.out.println("\t Nombre: " + listaSupervivientes.get(i).getNombre());
@@ -89,6 +87,7 @@ public class TestZombicide {
             System.out.println("\t \t Respawn: "+listaZombies.get(i).getHorda().getRespawn()+"\n");
         }*/
 
+        
+        
     }
-
 }
