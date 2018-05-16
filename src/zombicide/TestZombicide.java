@@ -24,11 +24,11 @@ public class TestZombicide {
         Superviviente Maggie = new Superviviente("Maggie", 3, 0, SkillsPersonaje.BUSCADOR);
         Superviviente Glenn = new Superviviente("Glenn", 3, 0, SkillsPersonaje.ESCURRIDIZO);
         Superviviente Michonne = new Superviviente("Michonne", 3, 0, SkillsPersonaje.AMBIDIESTRO);
-        Zombie zombie1 = new Zombie(2, 1, TipoZombie.CAMINANTE);
-        Zombie zombie2 = new Zombie(3, 2, TipoZombie.CAMINANTE);
-        Zombie zombie3 = new Zombie(3, 1, TipoZombie.CAMINANTE);
-        Zombie zombie4 = new Zombie(2, 3, TipoZombie.CAMINANTE);
-        Zombie zombie5 = new Zombie(5, 1, TipoZombie.CAMINANTE);
+        Caminante caminante1 = new Caminante(2, 1, TipoZombie.CAMINANTE);
+        Caminante caminante2 = new Caminante(3, 2, TipoZombie.CAMINANTE);
+        Caminante caminante3 = new Caminante(3, 1, TipoZombie.CAMINANTE);
+        Caminante caminante4 = new Caminante(2, 3, TipoZombie.CAMINANTE);
+        Caminante caminante5 = new Caminante(5, 1, TipoZombie.CAMINANTE);
         
         /**
          * Creamos las 4 armas con sus valores iniciales.
@@ -47,7 +47,8 @@ public class TestZombicide {
         Glenn.setArma(sarten);
         Michonne.setArma(katana);
 
-        Caminante c = new Caminante();
+//        Caminante c = new Caminante(3, 2, TipoZombie.CAMINANTE);
+//        Gordo g = new Gordo(3, 3, TipoZombie.GORDO);
         
         /**
          * Añadimos a los jugadores y a los zombies a sus arrays
@@ -57,12 +58,13 @@ public class TestZombicide {
         listaSupervivientes.add(Maggie);
         listaSupervivientes.add(Glenn);
         listaSupervivientes.add(Michonne);
-        listaZombies.add(zombie1);
-        listaZombies.add(zombie2);
-        listaZombies.add(zombie3);
-        listaZombies.add(zombie4);
-        listaZombies.add(zombie5);
-/*
+        listaZombies.add(caminante1);
+        listaZombies.add(caminante2);
+        listaZombies.add(caminante3);
+        listaZombies.add(caminante4);
+        listaZombies.add(caminante5);
+        
+        //Mostramos todos los datos de los supervivientes
         for (int i = 0; i < listaSupervivientes.size(); i++) {
             System.out.println("Superviviente: " + (i + 1) + "\t");
             System.out.println("\t Nombre: " + listaSupervivientes.get(i).getNombre());
@@ -78,6 +80,9 @@ public class TestZombicide {
             }
         }
         
+        System.out.println("----------------------------------------------------");
+
+        //Mostramos todos los datos de los zombies
         for (int i = 0; i < listaZombies.size(); i++) {
             System.out.println("Zombie: "+ (i + 1) + "\t");
             System.out.println("\t Daño: "+listaZombies.get(i).getDano());
@@ -85,7 +90,7 @@ public class TestZombicide {
             System.out.println("\t Movimiento: "+listaZombies.get(i).getMovimiento());
             System.out.println("\t Horda:");
             System.out.println("\t \t Respawn: "+listaZombies.get(i).getHorda().getRespawn()+"\n");
-        }*/
+        }
 
         
         
