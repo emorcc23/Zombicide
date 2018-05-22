@@ -16,7 +16,7 @@ public class Zombie {
     int G = 10;
     // zomrandom devolverá un valor entre P y G, ambos incluidos.
     int zomrandom = (int) Math.floor(Math.random() * (P - G + 1) + G);  
-
+    
     public int getZomrandom() {
         return zomrandom;
     }

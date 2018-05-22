@@ -22,6 +22,7 @@ public class TestZombicide {
         metodos.mostrarSuperviviente(listaSupervivientes);
 
         int planta = 0;
+        int viveomuere = (int) (Math.random()* 2);
 
         planta = 1;
         switch (planta) {
@@ -44,5 +45,17 @@ public class TestZombicide {
                 System.out.println("Algo va mal con las plantas.. revisalo!");
                 break;
         }
+        
+        /**
+         * Esto devuelve si esta vivo o muerto al dar un impacto
+         * (Acordarse de quitar el comentario)
+         * metodos.viveomuereZombie(viveomuere);
+         */
+        
+        /**
+         * Para empezar el juego...
+         * -El edificio tiene 3 plantas-
+         * -En cada planta hay una horda con 8 zombis..............
+         */
     }
 }

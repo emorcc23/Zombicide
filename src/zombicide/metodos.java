@@ -15,7 +15,24 @@ import static zombicide.TestZombicide.listaZombies;
  */
 public class metodos {
 
-    
+    /**
+     * Método que genera un aleatorio de 0 o 1 para determinar el exito
+     * de un superviviente al realizar su ataque.
+     * @param viveomuere 
+     */
+    public static void viveomuereZombie(int viveomuere) {
+        if (viveomuere == 0) {
+            System.out.println(viveomuere+ " vive");
+        } else if (viveomuere == 1) {
+            System.out.println(viveomuere+ " muerto");
+        } else {
+            System.out.println("Problemas en viveomuereZombie");
+        }
+    }
+    /**
+     * Método que muestra los datos de los supervivientes
+     * @param listaSuperviviente 
+     */
     public static void mostrarSuperviviente(ArrayList<Superviviente> listaSuperviviente) {
         //Mostramos todos los datos de los supervivientes
         System.out.println("Datos de los supervivientes:");
@@ -36,6 +53,7 @@ public class metodos {
             System.out.println("_______________________________");
         }
     }
+    
     /**
      * Método para asignar los zombies a la planta1
      *
