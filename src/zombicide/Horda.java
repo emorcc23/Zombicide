@@ -6,6 +6,7 @@ package zombicide;
  */
 public class Horda {
     private int respawn = 2;
+    
 
     public int getRespawn() {
         return respawn;

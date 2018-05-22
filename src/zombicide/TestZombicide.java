@@ -1,6 +1,7 @@
 package zombicide;
 
 import java.util.*;
+import zombicide.metodos;
 
 /**
  *
@@ -15,84 +16,33 @@ public class TestZombicide {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
 
-        /**
-         * Creamos 5 jugadores y 5 zombies
-         */
-        Superviviente Rick = new Superviviente("Rick", 3, 0, SkillsPersonaje.RAPIDO);
-        Superviviente Daryl = new Superviviente("Daryl", 3, 0, SkillsPersonaje.FORTACHON);
-        Superviviente Maggie = new Superviviente("Maggie", 3, 0, SkillsPersonaje.BUSCADOR);
-        Superviviente Glenn = new Superviviente("Glenn", 3, 0, SkillsPersonaje.ESCURRIDIZO);
-        Superviviente Michonne = new Superviviente("Michonne", 3, 0, SkillsPersonaje.AMBIDIESTRO);
-        Caminante caminante1 = new Caminante(2, 1, TipoZombie.CAMINANTE);
-        Caminante caminante2 = new Caminante(3, 2, TipoZombie.CAMINANTE);
-        Caminante caminante3 = new Caminante(3, 1, TipoZombie.CAMINANTE);
-        Caminante caminante4 = new Caminante(2, 3, TipoZombie.CAMINANTE);
-        Caminante caminante5 = new Caminante(5, 1, TipoZombie.CAMINANTE);
-        
-        /**
-         * Creamos las 4 armas con sus valores iniciales.
-         */
-        Arma sarten = new Arma(1, 0, TipoArma.SARTEN);
-        Arma pistola = new Arma(3, 1, TipoArma.PISTOLA);
-        Arma escopeta = new Arma(7, 2, TipoArma.ESCOPETA);
-        Arma katana = new Arma(4, 0, TipoArma.KATANA);
-        
-        /**
-         * Les damos las armas a nuestros supervivientes
-         */
-        Rick.setArma(pistola);
-        Daryl.setArma(escopeta);
-        Maggie.setArma(sarten);
-        Glenn.setArma(sarten);
-        Michonne.setArma(katana);
+        metodos.SupervivientesDefault();
+        metodos.mostrarSuperviviente(listaSupervivientes);
 
-//        Caminante c = new Caminante(3, 2, TipoZombie.CAMINANTE);
-//        Gordo g = new Gordo(3, 3, TipoZombie.GORDO);
-        
-        /**
-         * Añadimos a los jugadores y a los zombies a sus arrays
-         */
-        listaSupervivientes.add(Rick);
-        listaSupervivientes.add(Daryl);
-        listaSupervivientes.add(Maggie);
-        listaSupervivientes.add(Glenn);
-        listaSupervivientes.add(Michonne);
-        listaZombies.add(caminante1);
-        listaZombies.add(caminante2);
-        listaZombies.add(caminante3);
-        listaZombies.add(caminante4);
-        listaZombies.add(caminante5);
-        
-        //Mostramos todos los datos de los supervivientes
-        for (int i = 0; i < listaSupervivientes.size(); i++) {
-            System.out.println("Superviviente: " + (i + 1) + "\t");
-            System.out.println("\t Nombre: " + listaSupervivientes.get(i).getNombre());
-            System.out.println("\t Vidas: " + listaSupervivientes.get(i).getVidas());
-            System.out.println("\t Nivel: " + listaSupervivientes.get(i).getNivel());
-            System.out.println("\t Skills: " + listaSupervivientes.get(i).getSkill());
-            if (listaSupervivientes.get(i).tieneArma()) {
-                System.out.println("\t Arma: " + listaSupervivientes.get(i).getArma().getTipoarma());
-                System.out.println("\t \t Daño: " + listaSupervivientes.get(i).getArma().getDano());
-                System.out.println("\t \t Distancia: " + listaSupervivientes.get(i).getArma().getDistancia()+ "\n");
-            } else {
-                System.out.println("\t \t Este jugador no tiene arma \n");
-            }
+        int planta = 0;
+
+        planta = 1;
+        switch (planta) {
+            case 1:
+                metodos.planta1(listaZombies, planta);
+                planta++;
+                break;
+            case 2:
+                metodos.planta2(listaZombies, planta);
+                planta++;
+                break;
+            case 3:
+                metodos.planta3(listaZombies, planta);
+                planta = 0;
+                break;
+            case 0:
+                System.out.println("No tienes asignada ninguna planta, ojito!");
+                break;
+            default:
+                System.out.println("Algo va mal con las plantas.. revisalo!");
+                break;
         }
-        
-        System.out.println("----------------------------------------------------");
-
-        //Mostramos todos los datos de los zombies
-        for (int i = 0; i < listaZombies.size(); i++) {
-            System.out.println("Zombie: "+ (i + 1) + "\t");
-            System.out.println("\t Daño: "+listaZombies.get(i).getDano());
-            System.out.println("\t TipoZombie: "+listaZombies.get(i).getTipoZombie());
-            System.out.println("\t Movimiento: "+listaZombies.get(i).getMovimiento());
-            System.out.println("\t Horda:");
-            System.out.println("\t \t Respawn: "+listaZombies.get(i).getHorda().getRespawn()+"\n");
-        }
-
-        
-        
     }
 }

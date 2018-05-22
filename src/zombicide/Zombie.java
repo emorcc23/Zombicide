@@ -10,7 +10,7 @@ public class Zombie {
     private int movimiento;
     private TipoZombie tipoZombie = TipoZombie.CAMINANTE;
     Horda horda = new Horda();
-    private int maxgolpeo = 0;
+    private int MAXGOLPEO = 0;
 
     int P = 1;
     int G = 10;
@@ -66,16 +66,24 @@ public class Zombie {
     //Método que permite calcular el nivel de golpeo zombie. 
     public int calcularGolpeo(SkillsPersonaje skill) {
         int puntos = 0;
-        if (skill == SkillsPersonaje.RAPIDO) {
-            puntos = 5;
-        } else if (skill == SkillsPersonaje.BUSCADOR) {
-            puntos = 3;
-        } else if (skill == SkillsPersonaje.FORTACHON) {
-            puntos = 7;
-        } else if (skill == SkillsPersonaje.AMBIDIESTRO) {
-            puntos = 8;
-        } else if (skill == SkillsPersonaje.ESCURRIDIZO) {
-            puntos = 9;
+        if (null != skill) switch (skill) {
+            case RAPIDO:
+                puntos = 5;
+                break;
+            case BUSCADOR:
+                puntos = 3;
+                break;
+            case FORTACHON:
+                puntos = 7;
+                break;
+            case AMBIDIESTRO:
+                puntos = 8;
+                break;
+            case ESCURRIDIZO:
+                puntos = 9;
+                break;
+            default:
+                break;
         }
         
         int valorgolpeo = 10 * puntos + zomrandom;
@@ -84,8 +92,8 @@ public class Zombie {
     
     public boolean getMaxGolpeo(int valorgolpeo) {
         boolean superado = false;
-        if (valorgolpeo > maxgolpeo) {
-            maxgolpeo = valorgolpeo;
+        if (valorgolpeo > MAXGOLPEO) {
+            MAXGOLPEO = valorgolpeo;
             superado = true;
         } else {
             superado = false;
@@ -96,7 +104,6 @@ public class Zombie {
         } else {
             System.out.println("¡Vaya, parece imposible superar el record!");
         }
-        
         return superado;
     }
 }

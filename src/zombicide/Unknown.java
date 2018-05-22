@@ -9,6 +9,10 @@ package zombicide;
  *
  * @author alu520994162
  */
-public class Unknown {
+public class Unknown extends Zombie {
+    
+    public Unknown(int dano, int movimiento, TipoZombie tipoZombie) {
+        super(dano, movimiento, tipoZombie);
+    }
     
 }
