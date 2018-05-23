@@ -11,8 +11,35 @@ package zombicide;
  */
 public class Unknown extends Zombie {
     
+    private int muere = 2;
+    
     public Unknown(int dano, int movimiento, TipoZombie tipoZombie) {
         super(dano, movimiento, tipoZombie);
     }
+
+    @Override
+    public void setMuere(int muere) {
+        super.setMuere(muere); 
+    }
+
+    @Override
+    public int getMuere() {
+        return this.muere;
+    }
     
+    /**
+     * Método del zombie Unknown y comprueba mediante un aleatorio
+     * si el Unknown ataca de nuevo o no.
+     * @param zarpa
+     * @return 
+     */
+    public static void zarpazo() {
+        int dobleAtaque = (int) (Math.random()* 10 + 1);
+        if (dobleAtaque >= 7) {
+            System.out.println(dobleAtaque + " Uy me da que ataca de nuevo");
+        } else {
+            System.out.println(dobleAtaque + " Te has salvado campeón");
+        }
+
+    }
 }

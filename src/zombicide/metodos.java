@@ -16,22 +16,25 @@ import static zombicide.TestZombicide.listaZombies;
 public class metodos {
 
     /**
-     * Método que genera un aleatorio de 0 o 1 para determinar el exito
-     * de un superviviente al realizar su ataque.
-     * @param viveomuere 
+     * Método que genera un aleatorio de 0 o 1 para determinar el exito de un
+     * superviviente al realizar su ataque.
+     *
+     * @param viveomuere
      */
     public static void viveomuereZombie(int viveomuere) {
         if (viveomuere == 0) {
-            System.out.println(viveomuere+ " vive");
+            System.out.println(viveomuere + " vive");
         } else if (viveomuere == 1) {
-            System.out.println(viveomuere+ " muerto");
+            System.out.println(viveomuere + " muerto");
         } else {
             System.out.println("Problemas en viveomuereZombie");
         }
     }
+
     /**
      * Método que muestra los datos de los supervivientes
-     * @param listaSuperviviente 
+     *
+     * @param listaSuperviviente
      */
     public static void mostrarSuperviviente(ArrayList<Superviviente> listaSuperviviente) {
         //Mostramos todos los datos de los supervivientes
@@ -46,14 +49,14 @@ public class metodos {
             if (listaSupervivientes.get(i).tieneArma()) {
                 System.out.println("\t Arma: " + listaSupervivientes.get(i).getArma().getTipoarma());
                 System.out.println("\t \t Daño: " + listaSupervivientes.get(i).getArma().getDano());
-                System.out.println("\t \t Distancia: " + listaSupervivientes.get(i).getArma().getDistancia()+ "\n");
+                System.out.println("\t \t Distancia: " + listaSupervivientes.get(i).getArma().getDistancia() + "\n");
             } else {
                 System.out.println("\t \t Este jugador no tiene arma \n");
             }
             System.out.println("_______________________________");
         }
     }
-    
+
     /**
      * Método para asignar los zombies a la planta1
      *
@@ -158,6 +161,10 @@ public class metodos {
 
         //Mostramos todos los datos de los zombies
         datosZombies(listaZombies);
+        int num1 = 1;
+        if (num1 == 1) {
+            Unknown.zarpazo();
+        }
     }
 
     /**
@@ -173,29 +180,36 @@ public class metodos {
             System.out.println("\t Movimiento: " + listaZombies.get(i).getMovimiento());
             System.out.println("\t Horda:");
             System.out.println("\t \t Respawn: " + listaZombies.get(i).getHorda().getRespawn() + "\n");
-            System.out.println("_______________________________");        
+            System.out.println("_______________________________");
         }
     }
-    
+
     public static void SupervivientesDefault() {
-                /**
+        /**
          * Creamos 5 jugadores y 5 zombies
          */
-        Superviviente Rick = new Superviviente("Rick", 3, 0, SkillsPersonaje.RAPIDO);
+        //Rapido automaticamente tiene daño 2.
+        Superviviente Rick = new Superviviente("Rick", 3, 0, SkillsPersonaje.AMBIDIESTRO);
+          //Fortachon dispone de una vida más al empezar el juego
         Superviviente Daryl = new Superviviente("Daryl", 3, 0, SkillsPersonaje.FORTACHON);
-        Superviviente Maggie = new Superviviente("Maggie", 3, 0, SkillsPersonaje.BUSCADOR);
-        Superviviente Glenn = new Superviviente("Glenn", 3, 0, SkillsPersonaje.ESCURRIDIZO);
-        Superviviente Michonne = new Superviviente("Michonne", 3, 0, SkillsPersonaje.AMBIDIESTRO);
+        //Buscador empieza automaticamente con una katana.  
+        Superviviente Maggie = new Superviviente("Maggie", 3, 0, SkillsPersonaje.ESCURRIDIZO);
+        //Escurridizo Si le van a morder, puede escaparse una única vez de la mordida (en cada planta)
+        Superviviente Glenn = new Superviviente("Glenn", 3, 0, SkillsPersonaje.RAPIDO);
+        //Ambidiestro Si el arma que lleva el superviviente es pistola, automaticamente lleva dos (dispara dos veces)
+        Superviviente Michonne = new Superviviente("Michonne", 3, 0, SkillsPersonaje.BUSCADOR);
+   
         // Creamos las 4 armas con sus valores iniciales.
-        Arma sarten = new Arma(1, 0, TipoArma.SARTEN);
-        Arma pistola = new Arma(3, 1, TipoArma.PISTOLA);
-        Arma escopeta = new Arma(7, 2, TipoArma.ESCOPETA);
-        Arma katana = new Arma(4, 0, TipoArma.KATANA);
+        Arma sarten = new Arma(1, 1, TipoArma.SARTEN);
+        Arma pistola = new Arma(1, 2, TipoArma.PISTOLA);
+        Arma escopeta = new Arma(1, 2, TipoArma.ESCOPETA);
+        Arma katana = new Arma(2, 1, TipoArma.KATANA);
+        Arma hacha = new Arma(2, 1, TipoArma.HACHA);
         // Les damos las armas a nuestros supervivientes
         Rick.setArma(pistola);
-        Daryl.setArma(escopeta);
+        Daryl.setArma(hacha);
         Maggie.setArma(sarten);
-        Glenn.setArma(sarten);
+        Glenn.setArma(escopeta);
         Michonne.setArma(katana);
         // Añadimos a los jugadores y a los zombies a sus arrays
         listaSupervivientes.add(Rick);
@@ -203,5 +217,13 @@ public class metodos {
         listaSupervivientes.add(Maggie);
         listaSupervivientes.add(Glenn);
         listaSupervivientes.add(Michonne);
+        /**
+         * Un poquito en resumen:
+         * RICK --> AMBIDIESTRO --> PISTOLA
+         * DARYL --> FORTACHÓN --> HACHA
+         * MAGGIE --> ESCURRIDIZO --> SARTÉN
+         * GLENN --> RAPIDO --> ESCOPETA
+         * MICHONNE --> BUSCADOR --> KATANA
+         */
     }
 }
