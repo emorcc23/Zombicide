@@ -24,7 +24,7 @@ public class TestZombicide {
         int planta = 0;
         int viveomuere = (int) (Math.random()* 2);
 
-        planta = 1;
+        planta = 3;
         switch (planta) {
             case 1:
                 metodos.planta1(listaZombies, planta);

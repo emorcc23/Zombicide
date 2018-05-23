@@ -11,6 +11,8 @@ package zombicide;
  */
 public class Gordo extends Zombie{
   
+    private int muere = 2;
+    
     public Gordo(int dano, int movimiento, TipoZombie tipoZombie) {
         super(dano, movimiento, tipoZombie);
     }
@@ -19,7 +21,17 @@ public class Gordo extends Zombie{
     public int calcularGolpeo(SkillsPersonaje skill) {
         return super.calcularGolpeo(skill)+2*getMovimiento();               
     }
+
+    @Override
+    public void setMuere(int muere) {
+        super.setMuere(muere); 
+    }
+
+    @Override
+    public int getMuere() {
+        return this.muere;
+    }
+
     
     
-  
 }

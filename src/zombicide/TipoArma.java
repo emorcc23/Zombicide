@@ -7,5 +7,5 @@ package zombicide;
 
 //Cremos un enum con todas las armas del juego.
 public enum TipoArma {
-    SARTEN, PISTOLA, ESCOPETA, KATANA
+    SARTEN, PISTOLA, ESCOPETA, KATANA, HACHA
 }

@@ -10,6 +10,7 @@ public class Zombie {
     private int movimiento;
     private TipoZombie tipoZombie = TipoZombie.CAMINANTE;
     Horda horda = new Horda();
+    private int muere = 0;
     private int MAXGOLPEO = 0;
 
     int P = 1;
@@ -62,6 +63,16 @@ public class Zombie {
     public void setTipoZombie(TipoZombie tipoZombie) {
         this.tipoZombie = tipoZombie;
     }
+
+    public int getMuere() {
+        return muere;
+    }
+
+    public void setMuere(int muere) {
+        this.muere = muere;
+    }
+    
+    
 
     //Método que permite calcular el nivel de golpeo zombie. 
     public int calcularGolpeo(SkillsPersonaje skill) {
