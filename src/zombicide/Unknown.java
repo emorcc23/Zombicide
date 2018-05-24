@@ -29,9 +29,7 @@ public class Unknown extends Zombie {
     
     /**
      * Método del zombie Unknown y comprueba mediante un aleatorio
-     * si el Unknown ataca de nuevo o no.
-     * @param zarpa
-     * @return 
+     * si el Unknown ataca de nuevo o no. 
      */
     public static void zarpazo() {
         int dobleAtaque = (int) (Math.random()* 10 + 1);

@@ -19,32 +19,29 @@ public class TestZombicide {
         
 
         metodos.SupervivientesDefault();
-        metodos.mostrarSuperviviente(listaSupervivientes);
+        //metodos.mostrarSuperviviente(listaSupervivientes);
 
         int planta = 0;
-        int viveomuere = (int) (Math.random()* 2);
+        
 
-        planta = 3;
-        switch (planta) {
-            case 1:
-                metodos.planta1(listaZombies, planta);
-                planta++;
-                break;
-            case 2:
-                metodos.planta2(listaZombies, planta);
-                planta++;
-                break;
-            case 3:
-                metodos.planta3(listaZombies, planta);
-                planta = 0;
-                break;
-            case 0:
-                System.out.println("No tienes asignada ninguna planta, ojito!");
-                break;
-            default:
-                System.out.println("Algo va mal con las plantas.. revisalo!");
-                break;
-        }
+        planta = 1;
+//        metodos.crearPlanta(listaZombies, planta);
+        
+        
+        metodos.ataqueaZombies(1);
+//        int aleatorioAtaqueZ = (int) (Math.random()* listaZombies.size());
+//        //Segunda comprobación
+//        for (int i = 0; i < listaZombies.size(); i++) {
+//            System.out.println(listaZombies.get(i).getTipoZombie());
+//        }
+//        
+//        listaZombies.remove(aleatorioAtaqueZ);
+//        System.out.println(aleatorioAtaqueZ);
+//        listaZombies.remove(aleatorioAtaqueZ);
+//        System.out.println(aleatorioAtaqueZ);
+//        listaZombies.remove(aleatorioAtaqueZ);
+//        System.out.println(aleatorioAtaqueZ);
+//        System.out.println("-----------------------------");
         
         /**
          * Esto devuelve si esta vivo o muerto al dar un impacto
