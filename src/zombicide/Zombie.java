@@ -5,7 +5,7 @@ package zombicide;
  * @author alu520994162
  */
 public class Zombie {
-
+    
     private int dano;
     private int movimiento;
     private TipoZombie tipoZombie = TipoZombie.CAMINANTE;

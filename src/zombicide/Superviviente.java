@@ -19,6 +19,10 @@ public class Superviviente {
     
     //Constructor por defecto. 
     public Superviviente() {}
+    
+    public Superviviente(String nombre) {
+        this.nombre = nombre;
+    }
 
     //Constructor con todos los parámetros.
     public Superviviente(String nombre, int vidas, int nivel, SkillsPersonaje skill) {
