@@ -17,15 +17,51 @@ public class TestZombicide {
      */
     public static void main(String[] args) {
 
+        boolean salir = false;
+        int opcion;
+
+        Scanner entrada = new Scanner(System.in);
+
+        while (!salir) {
+
+            System.out.println("\t ¡Bienvenido a Zombicide!\n");
+            System.out.println("1. Partida rápida");
+            System.out.println("2. Partida con amigos");
+            System.out.println("3. Conocer a los supervivientes");
+            System.out.println("4. Conocer a que nos vamos a enfrentar");
+            System.out.println("5. Salir");
+            opcion = entrada.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+                    metodos.mostrarSuperviviente(listaSupervivientes);
+                    break;
+                case 4:
+                    
+                    break;
+                case 5:
+                    salir = true;
+                    break;
+                default:
+                    System.out.println("No has pulsado una opción correcta.");
+
+            }
+        }
+
 //        metodos.SupervivientesDefault();
-        int planta = 0;
+        int planta;
 
         planta = 1;
-        metodos.crearPlanta(listaZombies, planta);     
+        metodos.crearPlanta(listaZombies, planta);
         metodos.SupervivientesDefault();
         metodos.crearArmas();
         metodos.mostrarSuperviviente(listaSupervivientes);
-        
 
         /**
          * Esto devuelve si esta vivo o muerto al dar un impacto (Acordarse de
@@ -37,7 +73,7 @@ public class TestZombicide {
          */
         metodos.batalla(listaZombies, listaSupervivientes, planta);
         planta++;
-        metodos.batalla(listaZombies,listaSupervivientes,planta);
+        metodos.batalla(listaZombies, listaSupervivientes, planta);
         planta++;
         metodos.batalla(listaZombies, listaSupervivientes, planta);
     }

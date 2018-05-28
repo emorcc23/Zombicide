@@ -32,7 +32,7 @@ public class metodos {
             for (int j = 0; j <= 2; j++) {
                 //Si listaZombies no está vacio, entonces...
                 if (!listaZombies.isEmpty()) {
-                    System.out.println(listaSupervivientes.get(i).getNombre() + ", ¡es tu ataque numero: "+(j+1)+"!");
+                    System.out.println(listaSupervivientes.get(i).getNombre() + ", ¡es tu ataque numero: " + (j + 1) + "!");
                     //Creamos un aleatorio del tamaño de listaZombies para que los supervivientes ataquen directamente
                     int aleatorioAtaqueZ = (int) (Math.random() * listaZombies.size());
                     //Si el daño de un arma es mayor que la vida del zombie en concreto entonces...
@@ -68,10 +68,11 @@ public class metodos {
         //Incrementamos la variable planta para pase a planta2.
         planta++;
     }
-    
+
     /**
      * Método para el ataque de zombies a supervivientes
-     * @param planta 
+     *
+     * @param planta
      */
     public static void ataqueaSupervivientes(int planta) {
         //Si listaZombies no está vacío, entonces...
@@ -92,20 +93,20 @@ public class metodos {
                         //Ya que los zombies cada vez que atacan quitan una vida si o sí simplemente modificamos el dato de los
                         //supervivientes quitandole una vida por cada zombie que le haya golpeado
                         listaSupervivientes.get(aleatorioAtaqueS).setVidas(vidas - 1);
-                        System.out.println("El zombie "+i+ " le ha quitado una vida a: "+listaSupervivientes.get(aleatorioAtaqueS).getNombre());
+                        System.out.println("El zombie " + i + " le ha quitado una vida a: " + listaSupervivientes.get(aleatorioAtaqueS).getNombre());
                         //Mostramos a los usuarios la información de la vida de sus jugadores.
                         if (listaSupervivientes.get(aleatorioAtaqueS).getVidas() > 1) {
-                            System.out.println("Calma "+listaSupervivientes.get(aleatorioAtaqueS).getNombre()+", aun te quedan "+listaSupervivientes.get(aleatorioAtaqueS).getVidas()+" vidas");
-                        } else if(listaSupervivientes.get(aleatorioAtaqueS).getVidas() == 1) {
-                            System.out.println(listaSupervivientes.get(aleatorioAtaqueS).getNombre()+", solo te queda una vida.. ¡Aprovechala!");
-                        } else if(listaSupervivientes.get(aleatorioAtaqueS).getVidas() == 0) {
-                            System.out.println("Chicos... "+listaSupervivientes.get(aleatorioAtaqueS).getNombre()+" no ha sobrevivido a esta ronda.");
+                            System.out.println("Calma " + listaSupervivientes.get(aleatorioAtaqueS).getNombre() + ", aun te quedan " + listaSupervivientes.get(aleatorioAtaqueS).getVidas() + " vidas");
+                        } else if (listaSupervivientes.get(aleatorioAtaqueS).getVidas() == 1) {
+                            System.out.println(listaSupervivientes.get(aleatorioAtaqueS).getNombre() + ", solo te queda una vida.. ¡Aprovechala!");
+                        } else if (listaSupervivientes.get(aleatorioAtaqueS).getVidas() == 0) {
+                            System.out.println("Chicos... " + listaSupervivientes.get(aleatorioAtaqueS).getNombre() + " no ha sobrevivido a esta ronda.");
                         } else {
                             System.out.println("Problemas en ataqueaSupervivientes");
                         }
                     } else {
                         //Aquí no debería entrar nunca, pero por control de errores lo prefiero añadir.
-                        System.out.println(listaSupervivientes.get(aleatorioAtaqueS).getNombre()+" está muerto, no se le ha podido atacar");
+                        System.out.println(listaSupervivientes.get(aleatorioAtaqueS).getNombre() + " está muerto, no se le ha podido atacar");
                     }
                 }
             }
@@ -113,7 +114,7 @@ public class metodos {
             planta++;
         }
     }
-    
+
     /**
      * Método en el cual hacemos elegir a los jugadores sus skills y sus armas.
      *
@@ -124,10 +125,10 @@ public class metodos {
         System.out.println("Bienvenido a ZOMBICIDE");
         System.out.println("____________________________\n");
         System.out.println("Lo primero es lo primero.. ¡A elegir personajes!");
-        
+
         for (int i = 0; i < listaSupervivientes.size(); i++) {
             System.out.println("Es el turno de JUGADOR" + (i + 1) + ":");
-            
+
             //Dejamos que el usuario introduzca su nombre y lo guardamos en la variable de tipo String
             System.out.println("Introduce tu nombre: ");
             String nombre = entrada.next();
@@ -244,7 +245,7 @@ public class metodos {
                             + " por defecto ya que tiene la skill: 'BUSCADOR'.");
                 }
             }
-            
+
             //Al personaje con habilidades de fortachon le sumaremos una vida más en su personaje
             if (listaSupervivientes.get(i).getSkill() == SkillsPersonaje.FORTACHON) {
                 listaSupervivientes.get(i).setVidas(4);
@@ -266,16 +267,35 @@ public class metodos {
 
     //A medias (hay que terminar primero la configuración de armas y skills)
     public static void batalla(ArrayList<Zombie> listaZombies, ArrayList<Superviviente> listaSupervivientes, int planta) {
-        System.out.println("¿Estáis preparado?");
+        //COMPROBAR
+        datosZombies(listaZombies);
+        //FIN COMPROBAR
+        System.out.println("¿Estáis preparados?");
         System.out.println("Pulsa 1 si lo estáis.");
-        System.out.println("Pulsa 2 si te haces popó.");
+        System.out.println("Pulsa 2 si os haceis popó.");
+        
         int eleccion = entrada.nextInt();
         switch (eleccion) {
             case 1:
                 System.out.println("Genial... ¡COMENZEMOS!\n");
                 System.out.println("_________________________");
-                System.out.println("Bienvenidos a la planta 1, aquí os encontrareis con 8 caminantes... "
-                        + "Lo demás, es cosa vuestra.\n");
+//                System.out.println("Bienvenidos a la planta 1, aquí os encontrareis con 8 caminantes... "
+//                        + "Lo demás, es cosa vuestra.\n");
+                String zombies = "";
+                switch (planta) {
+                    case 1:
+                        zombies = "8 caminantes... Lo demás es cosa vuestra.\n";
+                        break;
+                    case 2:
+                        zombies = "6 caminantes y 2 gordos... ¿preparados?\n";
+                        break;
+                    case 3:
+                        zombies = "5 caminantes, 2 gordos y un unknown... ¡Ya no os podeis rendir!";
+                        break;
+                    default:
+                        break;
+                }
+                System.out.println("Bienvenidos a la planta " + planta + " , aquí os encontrareis con: " + zombies);
                 crearPlanta(listaZombies, eleccion);
                 System.out.println("Vamos a situar un poco al público con algo de información sobre vostros..¡Saludad!");
                 //Mostramos a todos los supervivientes con todos sus datos
@@ -306,10 +326,10 @@ public class metodos {
         int viveomuere = (int) (Math.random() * 2);
         switch (viveomuere) {
             case 0:
-                System.out.println(viveomuere + " vive");
+//                System.out.println(viveomuere + " vive");
                 break;
             case 1:
-                System.out.println(viveomuere + " muerto");
+//                System.out.println(viveomuere + " muerto");
                 break;
             default:
                 System.out.println("Problemas en viveomuereZombie");
@@ -343,11 +363,12 @@ public class metodos {
             System.out.println("_______________________________");
         }
     }
-    
+
     /**
      * Método que crea las plantas (planta se le pasa desde el main)
+     *
      * @param listaZombies
-     * @param planta 
+     * @param planta
      */
     public static void crearPlanta(ArrayList<Zombie> listaZombies, int planta) {
         switch (planta) {
