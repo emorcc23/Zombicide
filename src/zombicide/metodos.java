@@ -16,16 +16,14 @@ import static zombicide.TestZombicide.listaZombies;
 public class metodos {
 
     static Scanner entrada = new Scanner(System.in);
-
+        
     /**
      * Método ataque de supervivientes a zombies
      *
      * @param planta
      */
     public static void ataqueaZombies(int planta) {
-        //Creamos la planta
-        crearPlanta(listaZombies, planta);
-        System.out.println("Comienza el juego, hay: " + listaZombies.size() + " zombies.");
+        System.out.println("Turno de supervivientes, hay: " + listaZombies.size() + " zombies.");
         //Recorremos listaSupervivientes
         for (int i = 0; i < listaSupervivientes.size(); i++) {
             //Creamos un bucle de 3 giros ya cada superviviente debe atacar tres veces.
@@ -54,29 +52,28 @@ public class metodos {
                             System.out.println("_________________________________");
                         }
                     }
-                } else {
-                    //Aquí entrará si al buscar a un nuevo Zombie para matar resulta que ya los han matado todos antes.
-                    System.out.println("Habeis acabado con todos los zombies, ¿Estais preparados para la siguiente planta?");
-                    break;
                 }
             }
         }
-        //Una vez terminado la posible primera ronda de ataque de los supervivientes informamos al usuario de
-        //cuantos zombies han quedado. Es posible que en el primer ataque de los supervivientes mueran todos los 
-        //zombies.
-        System.out.println("Termina el juego, hay: " + listaZombies.size() + " zombies en la planta " + planta + ".");
-        //Incrementamos la variable planta para pase a planta2.
-        planta++;
+        if (listaZombies.isEmpty()) {
+            System.out.println("Habeis acabado con todos los zombies de la planta " + planta + ", ¿Estais preparados para la siguiente planta?");
+            System.out.println("______________________________\n");
+            planta++;
+        
+        }
     }
 
     /**
      * Método para el ataque de zombies a supervivientes
      *
      * @param planta
+     * @param salir
+     * @return
      */
     public static void ataqueaSupervivientes(int planta) {
         //Si listaZombies no está vacío, entonces...
         if (!listaZombies.isEmpty()) {
+            System.out.println(listaZombies.size());
             //Comienza el ataque de los Zombies.
             System.out.println("\n Es hora de que ataquen los zombies...");
             System.out.println("____________________________");
@@ -88,31 +85,44 @@ public class metodos {
                 //Comprobamos que en la planta1 solo hay caminantes.
                 if (listaZombies.get(i).getTipoZombie() == TipoZombie.CAMINANTE) {
                     //Si vidas es mayor que 0 entonces...
-                    if (listaSupervivientes.get(aleatorioAtaqueS).getVidas() > 0) {
-                        int vidas = listaSupervivientes.get(aleatorioAtaqueS).getVidas();
-                        //Ya que los zombies cada vez que atacan quitan una vida si o sí simplemente modificamos el dato de los
-                        //supervivientes quitandole una vida por cada zombie que le haya golpeado
-                        listaSupervivientes.get(aleatorioAtaqueS).setVidas(vidas - 1);
-                        System.out.println("El zombie " + i + " le ha quitado una vida a: " + listaSupervivientes.get(aleatorioAtaqueS).getNombre());
-                        //Mostramos a los usuarios la información de la vida de sus jugadores.
-                        if (listaSupervivientes.get(aleatorioAtaqueS).getVidas() > 1) {
-                            System.out.println("Calma " + listaSupervivientes.get(aleatorioAtaqueS).getNombre() + ", aun te quedan " + listaSupervivientes.get(aleatorioAtaqueS).getVidas() + " vidas");
-                        } else if (listaSupervivientes.get(aleatorioAtaqueS).getVidas() == 1) {
-                            System.out.println(listaSupervivientes.get(aleatorioAtaqueS).getNombre() + ", solo te queda una vida.. ¡Aprovechala!");
-                        } else if (listaSupervivientes.get(aleatorioAtaqueS).getVidas() == 0) {
-                            System.out.println("Chicos... " + listaSupervivientes.get(aleatorioAtaqueS).getNombre() + " no ha sobrevivido a esta ronda.");
+                    if (!listaSupervivientes.isEmpty()) {
+                        if (listaSupervivientes.get(aleatorioAtaqueS).getVidas() > 0) {
+                            int vidas = listaSupervivientes.get(aleatorioAtaqueS).getVidas();
+                            //Ya que los zombies cada vez que atacan quitan una vida si o sí simplemente modificamos el dato de los
+                            //supervivientes quitandole una vida por cada zombie que le haya golpeado
+                            listaSupervivientes.get(aleatorioAtaqueS).setVidas(vidas - 1);
+                            System.out.println("El zombie " + i + " le ha quitado una vida a: " + listaSupervivientes.get(aleatorioAtaqueS).getNombre());
+                            //Mostramos a los usuarios la información de la vida de sus jugadores.
+                            if (listaSupervivientes.get(aleatorioAtaqueS).getVidas() > 1) {
+                                System.out.println("Calma " + listaSupervivientes.get(aleatorioAtaqueS).getNombre() + ", aun te quedan " + listaSupervivientes.get(aleatorioAtaqueS).getVidas() + " vidas");
+                                System.out.println("_________________________________");
+                            } else if (listaSupervivientes.get(aleatorioAtaqueS).getVidas() == 1) {
+                                System.out.println(listaSupervivientes.get(aleatorioAtaqueS).getNombre() + ", solo te queda una vida.. ¡Aprovechala!");
+                                System.out.println("_________________________________");
+                            } else if (listaSupervivientes.get(aleatorioAtaqueS).getVidas() == 0) {
+                                System.out.println("Chicos... " + listaSupervivientes.get(aleatorioAtaqueS).getNombre() + " no ha sobrevivido a esta ronda.");
+                                listaSupervivientes.remove(aleatorioAtaqueS);
+                                System.out.println("_________________________________");
+                            } else {
+                                System.out.println("Problemas en ataqueaSupervivientes");
+                            }
+
+                            System.out.println("_________________________________");
+
                         } else {
-                            System.out.println("Problemas en ataqueaSupervivientes");
+                            //Aquí no debería entrar nunca, pero por control de errores lo prefiero añadir.
+                            System.out.println(listaSupervivientes.get(aleatorioAtaqueS).getNombre() + " está muerto, no se le ha podido atacar");
                         }
-                    } else {
-                        //Aquí no debería entrar nunca, pero por control de errores lo prefiero añadir.
-                        System.out.println(listaSupervivientes.get(aleatorioAtaqueS).getNombre() + " está muerto, no se le ha podido atacar");
                     }
                 }
             }
-        } else {
-            planta++;
-        }
+            if (!listaSupervivientes.isEmpty()) {
+                System.out.println("Sois " + listaSupervivientes.size() + " supervivientes, de momento...");
+                metodos.ataqueaZombies(planta);
+            } else {
+                System.out.println("¡GAME OVER! Habeis muerto todos...");
+            }
+        } 
     }
 
     /**
@@ -266,14 +276,14 @@ public class metodos {
     }
 
     //A medias (hay que terminar primero la configuración de armas y skills)
-    public static void batalla(ArrayList<Zombie> listaZombies, ArrayList<Superviviente> listaSupervivientes, int planta) {
+    public static void batalla(ArrayList<Zombie> listaZombies, ArrayList<Superviviente> listaSupervivientes, int planta, int contador) {
         //COMPROBAR
         datosZombies(listaZombies);
         //FIN COMPROBAR
-        System.out.println("¿Estáis preparados?");
+        System.out.println("¿Estáis preparados para la planta " + planta + "?");
         System.out.println("Pulsa 1 si lo estáis.");
-        System.out.println("Pulsa 2 si os haceis popó.");
-        
+        System.out.println("Pulsa 2 si os haceis caquita.");
+
         int eleccion = entrada.nextInt();
         switch (eleccion) {
             case 1:
@@ -407,10 +417,6 @@ public class metodos {
                 crearPlanta3(listaZombies);
                 //Mostramos todos los datos de los zombies
 //                datosZombies(listaZombies);
-                int num1 = 1;
-                if (num1 == 1) {
-                    Unknown.zarpazo();
-                }
                 break;
             case 0:
                 System.out.println("No tienes asignada ninguna planta, ojito!");

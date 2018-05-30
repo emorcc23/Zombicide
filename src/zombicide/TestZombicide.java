@@ -1,5 +1,7 @@
 package zombicide;
 
+import com.sun.swing.internal.plaf.metal.resources.metal;
+import java.io.IOException;
 import java.util.*;
 import zombicide.metodos;
 
@@ -19,62 +21,50 @@ public class TestZombicide {
 
         boolean salir = false;
         int opcion;
+        int contador = 0;
 
         Scanner entrada = new Scanner(System.in);
+        System.out.println("Empieza");
+        int planta = 0;
 
-        while (!salir) {
-
-            System.out.println("\t ¡Bienvenido a Zombicide!\n");
-            System.out.println("1. Partida rápida");
-            System.out.println("2. Partida con amigos");
-            System.out.println("3. Conocer a los supervivientes");
-            System.out.println("4. Conocer a que nos vamos a enfrentar");
-            System.out.println("5. Salir");
-            opcion = entrada.nextInt();
-
-            switch (opcion) {
-                case 1:
-                    
-                    break;
-                case 2:
-
-                    break;
-                case 3:
-                    metodos.mostrarSuperviviente(listaSupervivientes);
-                    break;
-                case 4:
-                    
-                    break;
-                case 5:
-                    salir = true;
-                    break;
-                default:
-                    System.out.println("No has pulsado una opción correcta.");
-
-            }
-        }
-
-//        metodos.SupervivientesDefault();
-        int planta;
-
-        planta = 1;
-        metodos.crearPlanta(listaZombies, planta);
         metodos.SupervivientesDefault();
-        metodos.crearArmas();
-        metodos.mostrarSuperviviente(listaSupervivientes);
+        do {
+            planta++;
+            metodos.crearPlanta(listaZombies, planta);
+            metodos.batalla(listaZombies, listaSupervivientes, planta, contador);
+        } while (planta < 3);
 
-        /**
-         * Esto devuelve si esta vivo o muerto al dar un impacto (Acordarse de
-         * quitar el comentario) metodos.viveomuereZombie(viveomuere);
-         */
-        /**
-         * Para empezar el juego... -El edificio tiene 3 plantas- -En cada
-         * planta hay una horda con 8 zombis..............
-         */
-        metodos.batalla(listaZombies, listaSupervivientes, planta);
-        planta++;
-        metodos.batalla(listaZombies, listaSupervivientes, planta);
-        planta++;
-        metodos.batalla(listaZombies, listaSupervivientes, planta);
+//        while (!salir) {
+//
+//            System.out.println("\t ¡Bienvenido a Zombicide!\n");
+//            System.out.println("1. Partida rápida");
+//            System.out.println("2. Partida con amigos");
+//            System.out.println("3. Conocer a los supervivientes");
+//            System.out.println("4. Conocer a que nos vamos a enfrentar");
+//            System.out.println("5. Salir");
+//            opcion = entrada.nextInt();
+//
+//            switch (opcion) {
+//                case 1:
+//                    //Partida rápida
+//                    //Creamos a los supervivientes.
+//                    metodos.SupervivientesDefault();
+//                    break;
+//                case 2:
+//
+//                    break;
+//                case 3:
+//                    metodos.mostrarSuperviviente(listaSupervivientes);
+//                    break;
+//                case 4:
+//                    break;
+//                case 5:
+//                    salir = true;
+//                    break;
+//                default:
+//                    System.out.println("No has pulsado una opción correcta.");
+//
+//            }
+//        }
     }
 }
