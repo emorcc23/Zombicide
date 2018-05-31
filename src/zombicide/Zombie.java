@@ -11,7 +11,7 @@ public class Zombie {
     private TipoZombie tipoZombie = TipoZombie.CAMINANTE;
     Horda horda = new Horda();
     private int muere = 0;
-    private int MAXGOLPEO = 0;
+    private int maxgolpeo = 0;
 
     int P = 1;
     int G = 10;
@@ -103,8 +103,8 @@ public class Zombie {
     
     public boolean getMaxGolpeo(int valorgolpeo) {
         boolean superado = false;
-        if (valorgolpeo > MAXGOLPEO) {
-            MAXGOLPEO = valorgolpeo;
+        if (valorgolpeo > maxgolpeo) {
+            maxgolpeo = valorgolpeo;
             superado = true;
         } else {
             superado = false;
@@ -112,6 +112,7 @@ public class Zombie {
         
         if (superado == true) {
             System.out.println("¡Guau! Se ha batido un nuevo record");
+            System.out.println("El nuevo record está en: "+maxgolpeo);
         } else {
             System.out.println("¡Vaya, parece imposible superar el record!");
         }

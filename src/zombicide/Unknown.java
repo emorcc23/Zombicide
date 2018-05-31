@@ -31,13 +31,13 @@ public class Unknown extends Zombie {
      * Método del zombie Unknown y comprueba mediante un aleatorio
      * si el Unknown ataca de nuevo o no. 
      */
-    public static void zarpazo() {
+    public static int zarpazo() {
         int dobleAtaque = (int) (Math.random()* 10 + 1);
         if (dobleAtaque >= 7) {
             System.out.println(dobleAtaque + " Uy me da que ataca de nuevo");
         } else {
             System.out.println(dobleAtaque + " Te has salvado campeón");
         }
-
+        return dobleAtaque;
     }
 }
