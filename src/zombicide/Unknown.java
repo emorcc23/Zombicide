@@ -30,14 +30,18 @@ public class Unknown extends Zombie {
     /**
      * Método del zombie Unknown y comprueba mediante un aleatorio
      * si el Unknown ataca de nuevo o no. 
+     * @return 
      */
-    public static int zarpazo() {
+     public boolean zarpazo() {
+         boolean salir;
         int dobleAtaque = (int) (Math.random()* 10 + 1);
         if (dobleAtaque >= 7) {
-            System.out.println(dobleAtaque + " Uy me da que ataca de nuevo");
+            salir = true;
+            System.out.println("El Unknown golpea, y además, ataca dos veces");
         } else {
-            System.out.println(dobleAtaque + " Te has salvado campeón");
+            System.out.println("El Unknown golpea, pero solo ataca una vez... Te has salvado campeón");
+            salir = false;
         }
-        return dobleAtaque;
+        return salir;
     }
 }
